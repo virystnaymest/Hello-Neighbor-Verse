@@ -1,4 +1,4 @@
 # Hello-neighbor-collection
-VERSION 1 EARLY
+VERSION 1 EARLY:
 ВАШ СОСЕД С СОСЕДНЕЙ УЛИЦЫ ЧТО-ТО СКРЫВАЕТ
 Я ДУМАЮ ЧТО НУЖНО БУДЕТ РАЗУЗНАТЬ ЧТО ОН СКРЫВАЕТ
