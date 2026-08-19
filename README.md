@@ -1,4 +1,4 @@
-# 🏠🔦 HELLO NEIGHBOR VERSE
+# 🏠🔦 HELLO NEIGHBOR VERSE ПАРОЛЬ ОТ ИГР: virystnaymest1234
 
 ### 🌌 Добро пожаловать в HELLO NEIGHBOR VERSE — вселенную, где за каждым закрытым окном скрывается своя тайна...
 
