@@ -54,23 +54,6 @@ Hello Neighbor Verse объединяет разные версии в одну 
 
 ---
 
-## 🖼️ Галерея
-
-Здесь можно размещать изображения, связанные с разными версиями:
-
-### Version 1
-![Hello Neighbor — Version 1](images/version-1.png)
-
-### Version 2
-![Hello Neighbor — Version 2](images/version-2.png)
-
-### Version 3
-![Hello Neighbor — Version 3](images/version-3.png)
-
-> 💡 Замени пути `images/version-1.png`, `images/version-2.png` и `images/version-3.png` на свои изображения.
-
----
-
 ## 🔥 Главная идея
 
 **Hello Neighbor Verse** — это не одна фиксированная версия мира.
