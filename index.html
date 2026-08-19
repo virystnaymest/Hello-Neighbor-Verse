@@ -1,0 +1,534 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#06080a">
+<title>HELLO NEIGHBOR VERSE — 3D ARCHIVE</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="boot"><div class="boot-logo">HNV</div><div class="boot-bar"><i></i></div><p>INITIALIZING NEIGHBORVERSE / 3D ARCHIVE</p></div>
+<canvas id="bg"></canvas><div class="scanlines"></div><div class="cursor"></div>
+<header>
+<a class="brand" href="#home"><strong>HN</strong><span>HELLO<br>NEIGHBOR<br><b>VERSE</b></span></a>
+<nav><a href="#home">HOME</a><a href="#models">3D MODELS</a><a href="#fx">FX LAB</a><a href="#trailer">TRAILER</a><a href="#world">WORLD</a><a href="#lore">LORE</a><a href="#gallery">GALLERY</a><button id="egg" title="???">●</button></nav>
+<button class="hamb"><i></i><i></i><i></i></button>
+</header>
+
+<main>
+<section id="home" class="hero">
+<div class="hero-content reveal">
+<span class="kicker">DIGITAL ARCHIVE // BUILD 05.0</span>
+<h1>HELLO<br><em>NEIGHBOR</em><small>VERSE</small></h1>
+<p>Интерактивная фанатская вселенная с 3D-просмотром домов, секретными архивами, параллаксом и скрытой мини-игрой.</p>
+<div class="actions"><a href="#models" class="btn red">OPEN 3D ARCHIVE ↗</a><a href="#world" class="btn">ENTER WORLD</a></div>
+<div class="hero-data"><span>RENDER <b>4K READY</b></span><span>FPS <b id="fps">60</b></span><span>STATUS <b class="green">ONLINE</b></span></div>
+</div>
+<div class="hero-visual" data-tilt>
+<div class="hero-image"></div><div class="hero-grid"></div><div class="hero-hud">MODEL_01 / RAVEN STREET</div>
+</div>
+</section>
+
+<section id="models" class="models section">
+<div class="head reveal"><span>01 / TRUE 3D HOUSE ARCHIVE</span><h2>REAL<br><em>3D MODELS</em></h2><p>Это уже не 3D-картинка: ниже встроен настоящий WebGL viewer. Вращай модель, приближай, включай авто-вращение и открывай полноэкранный режим.</p></div>
+<div class="real3d-wrap reveal">
+<div class="real3d-view"><iframe id="modelFrame" title="Hello Neighbor 3D model" allow="autoplay; fullscreen; xr-spatial-tracking" allowfullscreen></iframe><div class="model-hud"><span id="liveName">ACT 3 HOUSE</span><span>WEBGL / SKETCHFAB</span><span id="modelState">LIVE</span></div><div class="scan-corner"></div></div>
+<aside class="model-info"><span>LIVE MODEL SELECTOR</span><h3 id="modelTitle">ACT 3<br>HOUSE</h3><p id="modelDesc">Большой дом из третьего акта. Модель можно исследовать прямо внутри сайта.</p><div class="model-list"><button class="m active" data-id="755270d2e3c544059d123516a770161c" data-name="ACT 3 HOUSE" data-title="ACT 3 / HOUSE" data-desc="Большой дом из третьего акта. Исследуй геометрию и детали прямо в WebGL viewer.">01 / ACT 3</button><button class="m" data-id="74dba9488756440c870ced4686581cb1" data-name="EARLY PROTOTYPE HOUSE" data-title="EARLY / PROTOTYPE" data-desc="Ранний вариант дома с экспериментальной архитектурой.">02 / PROTOTYPE</button><button class="m" data-id="17375cb966374db09daabe9afe8d7d4e" data-name="PLAYER HOUSE ALPHA 1" data-title="PLAYER / HOUSE" data-desc="Альфа-вариант дома игрока из раннего периода разработки.">03 / PLAYER</button></div><div class="model-actions"><button class="btn red" id="rotateToggle">AUTO ROTATE</button><a class="btn" id="sourceModel" target="_blank" rel="noreferrer">SOURCE ↗</a></div></aside>
+</div>
+<div class="feature-row"><div><b>01</b><span>TRUE WEBGL</span><p>Настоящая 3D-сцена вместо плоской картинки.</p></div><div><b>02</b><span>ORBIT + ZOOM</span><p>Вращение, приближение и свободный обзор.</p></div><div><b>03</b><span>FULLSCREEN</span><p>Разворачивай viewer на весь экран.</p></div><div><b>04</b><span>MODEL SWAP</span><p>Переключай три разных 3D-модели.</p></div></div>
+</section>
+
+<section id="fx" class="fx section">
+<div class="head reveal"><span>02 / EFFECTS LAB // 60+ VISUAL SYSTEMS</span><h2>TURN<br><em>EVERYTHING ON.</em></h2><p>Интерактивная лаборатория эффектов. Переключай режимы, меняй интенсивность и наблюдай, как сцена превращается в 3D-постер, голограмму, wireframe, holographic material или analog nightmare.</p></div>
+<div class="fx-lab reveal" id="fxLab">
+<div class="fx-stage" id="fxStage">
+<div class="fx-orb"><div class="fx-cube"><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
+<div class="fx-floor"></div><div class="fx-fog"></div><div class="fx-rays"></div><div class="fx-particles"></div><div class="fx-electric"></div>
+<div class="fx-text">HELLO<br><em>NEIGHBOR</em></div><div class="fx-label">MATERIAL_01 // LIVE</div>
+</div>
+<div class="fx-panel"><div class="fx-panel-top"><span>FX CONSOLE</span><b id="fxMode">CINEMATIC</b></div>
+<label>INTENSITY <input id="fxIntensity" type="range" min="0" max="100" value="65"><output id="fxOut">65%</output></label>
+<div class="fx-buttons"><button data-fx="cinematic" class="active">CINEMATIC</button><button data-fx="neon">NEON GLOW</button><button data-fx="wire">WIREFRAME</button><button data-fx="holo">HOLOGRAM</button><button data-fx="ghost">GHOST</button><button data-fx="xray">X-RAY</button><button data-fx="toon">TOON</button><button data-fx="chrome">CHROME</button><button data-fx="liquid">LIQUID</button><button data-fx="glitch">GLITCH</button><button data-fx="dissolve">DISSOLVE</button><button data-fx="rgb">RGB SPLIT</button></div>
+<div class="fx-toggles"><button data-toggle="rain">RAIN</button><button data-toggle="snow">SNOW</button><button data-toggle="dust">DUST</button><button data-toggle="sparks">SPARKS</button><button data-toggle="fog">FOG</button><button data-toggle="lightning">LIGHTNING</button><button data-toggle="bloom">BLOOM</button><button data-toggle="scan">SCANLINES</button><button data-toggle="shake">CAM SHAKE</button><button data-toggle="fisheye">FISHEYE</button><button data-toggle="dof">DEPTH OF FIELD</button><button data-toggle="vignette">VIGNETTE</button></div>
+<div class="fx-readout"><span>GEOMETRY</span><b>EXTRUDE · BEVEL · INSET · TWIST · BEND · TAPER · SHEAR · MORPH · ARRAY · SUBDIVISION · DISPLACEMENT · BOOLEAN</b><span>LIGHT</span><b>REAL-TIME SHADOW · AO · RIM · VOLUMETRIC · GOD RAYS · BLOOM · HDR</b><span>MATERIAL</span><b>METALLIC · GLASS · RUBBER · CERAMIC · WOOD · LIQUID · IRIDESCENT · TRANSLUCENT · CLEAR COAT · EMISSION</b></div>
+</div></div>
+<div class="fx-chips"><span>EXTRUDE</span><span>BEVEL</span><span>BOOLEAN</span><span>MORPH</span><span>DISPLACEMENT</span><span>GLOBAL ILLUMINATION</span><span>CAUSTICS</span><span>SUBSURFACE</span><span>FLUID</span><span>CLOTH</span><span>RIGID BODY</span><span>DESTRUCTION</span><span>EXPLOSION</span><span>VOLUMETRIC FOG</span><span>CHROMATIC ABERRATION</span><span>FILM GRAIN</span><span>ELECTRIC ARCS</span><span>FORCE FIELD</span><span>DOLLY ZOOM</span><span>FOCUS PULL</span><span>SPRING PHYSICS</span><span>MAGNETIC 3D</span><span>3D CAROUSEL</span><span>GLASSMORPHISM</span></div>
+</section>
+
+<section id="trailer" class="trailer section">
+<div class="head reveal"><span>03 / TRAILER // ANALOG HORROR</span><h2>WATCH<br><em>THE TAPE.</em></h2><p>Твой загруженный трейлер встроен в архив. Нажми play, включи звук и разверни видео.</p></div>
+<div class="trailer-wrap reveal"><div class="trailer-screen"><video id="trailerVideo" src="assets/trailer.mp4" playsinline preload="metadata"></video><div class="trailer-vignette"></div><div class="trailer-title">HELLO NEIGHBOR<br><em>ANALOG HORROR</em></div><div class="trailer-controls"><button id="playTrailer">PLAY / PAUSE</button><button id="muteTrailer">SOUND: OFF</button><button id="fullTrailer">FULLSCREEN</button><div class="trailer-progress"><i id="videoProgress"></i></div><span id="videoTime">00:00</span></div></div><aside class="trailer-info"><span>TAPE 001</span><h3>THE HOUSE<br>IS LISTENING.</h3><p>Смотри до конца. В видео может быть больше информации, чем кажется при первом просмотре.</p><div class="tape-data"><b>720P</b><small>LOCAL VIDEO</small><b>ANALOG</b><small>HORROR CUT</small><b>01:00+</b><small>ARCHIVE</small></div></aside></div>
+</section>
+
+
+<section id="catalog" class="catalog section">
+  <div class="head reveal"><span>06 / 3D MUSEUM // 100+ INDEXED SOURCES</span><h2>THE<br><em>MODEL VAULT</em></h2><p>Большой каталог по Hello Neighbor: <b>37 прямых WebGL-моделей</b> встроены в карточки, а остальные записи ведут на публичные Sketchfab-источники и коллекции. Загружаем модели лениво, чтобы сайт не превращался в тормозной каталог из ста iframe сразу.</p></div>
+  <div class="catalog-toolbar reveal"><div class="catalog-count"><b>105</b><span>ARCHIVE RECORDS</span></div><input id="modelSearch" type="search" placeholder="Искать дом, соседа, ключ, телевизор..."><select id="modelFilter"><option value="all">ALL</option><option value="3d">DIRECT 3D</option><option value="index">INDEXED</option><option value="house">HOUSE</option><option value="character">CHARACTER</option><option value="prop">PROP</option></select></div>
+  <div class="catalog-grid" id="catalogGrid"><article class="model-card-item reveal" data-kind="3d" data-uid="06d357fa696e4e968f0c1d9ff321bbfc" data-title="Hello Neighbor Model" data-author="BillCipher987654321">
+          <div class="model-thumb"><iframe loading="lazy" title="Hello Neighbor Model" src="https://sketchfab.com/models/06d357fa696e4e968f0c1d9ff321bbfc/embed?autostart=0&ui_theme=dark" allow="autoplay; fullscreen; xr-spatial-tracking" allowfullscreen></iframe><div class="card-tag">CHARACTER</div></div>
+          <div class="model-card-body"><span>#001 / VERIFIED 3D</span><h3>Hello Neighbor Model</h3><p>BillCipher987654321 · Sketchfab</p><button class="open-model">OPEN 3D ↗</button></div>
+        </article>
+<article class="model-card-item reveal" data-kind="3d" data-uid="bb7acfaecb3a4f03a837933f267480bd" data-title="Search &amp; Rescue Neighbor" data-author="Eton">
+          <div class="model-thumb"><iframe loading="lazy" title="Search &amp; Rescue Neighbor" src="https://sketchfab.com/models/bb7acfaecb3a4f03a837933f267480bd/embed?autostart=0&ui_theme=dark" allow="autoplay; fullscreen; xr-spatial-tracking" allowfullscreen></iframe><div class="card-tag">CHARACTER</div></div>
+          <div class="model-card-body"><span>#002 / VERIFIED 3D</span><h3>Search &amp; Rescue Neighbor</h3><p>Eton · Sketchfab</p><button class="open-model">OPEN 3D ↗</button></div>
+        </article>
+<article class="model-card-item reveal" data-kind="3d" data-uid="ef75886b18ef4ee1baf9631bcf563a4f" data-title="Neighbor Pre-Alpha" data-author="Jaden2020">
+          <div class="model-thumb"><iframe loading="lazy" title="Neighbor Pre-Alpha" src="https://sketchfab.com/models/ef75886b18ef4ee1baf9631bcf563a4f/embed?autostart=0&ui_theme=dark" allow="autoplay; fullscreen; xr-spatial-tracking" allowfullscreen></iframe><div class="card-tag">CHARACTER</div></div>
+          <div class="model-card-body"><span>#003 / VERIFIED 3D</span><h3>Neighbor Pre-Alpha</h3><p>Jaden2020 · Sketchfab</p><button class="open-model">OPEN 3D ↗</button></div>
+        </article>
+<article class="model-card-item reveal" data-kind="3d" data-uid="1ca7c42119d347f3939157606eca4255" data-title="Hello Neighbor 1 Neighbor" data-author="Pradzuhs">
+          <div class="model-thumb"><iframe loading="lazy" title="Hello Neighbor 1 Neighbor" src="https://sketchfab.com/models/1ca7c42119d347f3939157606eca4255/embed?autostart=0&ui_theme=dark" allow="autoplay; fullscreen; xr-spatial-tracking" allowfullscreen></iframe><div class="card-tag">CHARACTER</div></div>
+          <div class="model-card-body"><span>#004 / VERIFIED 3D</span><h3>Hello Neighbor 1 Neighbor</h3><p>Pradzuhs · Sketchfab</p><button class="open-model">OPEN 3D ↗</button></div>
+        </article>
+<article class="model-card-item reveal" data-kind="3d" data-uid="755270d2e3c544059d123516a770161c" data-title="House Act 3" data-author="natk.200954">
+          <div class="model-thumb"><iframe loading="lazy" title="House Act 3" src="https://sketchfab.com/models/755270d2e3c544059d123516a770161c/embed?autostart=0&ui_theme=dark" allow="autoplay; fullscreen; xr-spatial-tracking" allowfullscreen></iframe><div class="card-tag">HOUSE</div></div>
+          <div class="model-card-body"><span>#005 / VERIFIED 3D</span><h3>House Act 3</h3><p>natk.200954 · Sketchfab</p><button class="open-model">OPEN 3D ↗</button></div>
+        </article>
+<article class="model-card-item reveal" data-kind="3d" data-uid="d79bfbd8c14d41c8aa49750c5c220a26" data-title="House Act 1" data-author="Youthful strawbewwy">
+          <div class="model-thumb"><iframe loading="lazy" title="House Act 1" src="https://sketchfab.com/models/d79bfbd8c14d41c8aa49750c5c220a26/embed?autostart=0&ui_theme=dark" allow="autoplay; fullscreen; xr-spatial-tracking" allowfullscreen></iframe><div class="card-tag">HOUSE</div></div>
+          <div class="model-card-body"><span>#006 / VERIFIED 3D</span><h3>House Act 1</h3><p>Youthful strawbewwy · Sketchfab</p><button class="open-model">OPEN 3D ↗</button></div>
+        </article>
+<article class="model-card-item reveal" data-kind="3d" data-uid="eaf89e7b29e444bf8676eb864be8ee28" data-title="Neighbor House Act 1" data-author="Userman Siliterry">
+          <div class="model-thumb"><iframe loading="lazy" title="Neighbor House Act 1" src="https://sketchfab.com/models/eaf89e7b29e444bf8676eb864be8ee28/embed?autostart=0&ui_theme=dark" allow="autoplay; fullscreen; xr-spatial-tracking" allowfullscreen></iframe><div class="card-tag">HOUSE</div></div>
+          <div class="model-card-body"><span>#007 / VERIFIED 3D</span><h3>Neighbor House Act 1</h3><p>Userman Siliterry · Sketchfab</p><button class="open-model">OPEN 3D ↗</button></div>
+        </article>
+<article class="model-card-item reveal" data-kind="3d" data-uid="e330689b6a8c4e83a0ad8ec964b5a39f" data-title="Neighbor House Alpha 1" data-author="sansaaa91">
+          <div class="model-thumb"><iframe loading="lazy" title="Neighbor House Alpha 1" src="https://sketchfab.com/models/e330689b6a8c4e83a0ad8ec964b5a39f/embed?autostart=0&ui_theme=dark" allow="autoplay; fullscreen; xr-spatial-tracking" allowfullscreen></iframe><div class="card-tag">HOUSE</div></div>
+          <div class="model-card-body"><span>#008 / VERIFIED 3D</span><h3>Neighbor House Alpha 1</h3><p>sansaaa91 · Sketchfab</p><button class="open-model">OPEN 3D ↗</button></div>
+        </article>
+<article class="model-card-item reveal" data-kind="3d" data-uid="e63fc9dbbccd4971bb322602859a7d0e" data-title="Neighbor House Alpha 2" data-author="Userman Siliterry">
+          <div class="model-thumb"><iframe loading="lazy" title="Neighbor House Alpha 2" src="https://sketchfab.com/models/e63fc9dbbccd4971bb322602859a7d0e/embed?autostart=0&ui_theme=dark" allow="autoplay; fullscreen; xr-spatial-tracking" allowfullscreen></iframe><div class="card-tag">HOUSE</div></div>
+          <div class="model-card-body"><span>#009 / VERIFIED 3D</span><h3>Neighbor House Alpha 2</h3><p>Userman Siliterry · Sketchfab</p><button class="open-model">OPEN 3D ↗</button></div>
+        </article>
+<article class="model-card-item reveal" data-kind="3d" data-uid="ae53df1d089242bb9803c99495bbe37a" data-title="Neighbor House Pre-Alpha" data-author="Userman Filterry">
+          <div class="model-thumb"><iframe loading="lazy" title="Neighbor House Pre-Alpha" src="https://sketchfab.com/models/ae53df1d089242bb9803c99495bbe37a/embed?autostart=0&ui_theme=dark" allow="autoplay; fullscreen; xr-spatial-tracking" allowfullscreen></iframe><div class="card-tag">HOUSE</div></div>
+          <div class="model-card-body"><span>#010 / VERIFIED 3D</span><h3>Neighbor House Pre-Alpha</h3><p>Userman Filterry · Sketchfab</p><button class="open-model">OPEN 3D ↗</button></div>
+        </article>
+<article class="model-card-item reveal" data-kind="3d" data-uid="e6861d708b494861a55b48134e595012" data-title="Player House Pre-Alpha" data-author="Userman Filtery">
+          <div class="model-thumb"><iframe loading="lazy" title="Player House Pre-Alpha" src="https://sketchfab.com/models/e6861d708b494861a55b48134e595012/embed?autostart=0&ui_theme=dark" allow="autoplay; fullscreen; xr-spatial-tracking" allowfullscreen></iframe><div class="card-tag">HOUSE</div></div>
+          <div class="model-card-body"><span>#011 / VERIFIED 3D</span><h3>Player House Pre-Alpha</h3><p>Userman Filtery · Sketchfab</p><button class="open-model">OPEN 3D ↗</button></div>
+        </article>
+<article class="model-card-item reveal" data-kind="3d" data-uid="66a390fe436746ee8bc1a124280a97e9" data-title="House Hello Neighbor Act 1" data-author="Hamza Sahmoudi">
+          <div class="model-thumb"><iframe loading="lazy" title="House Hello Neighbor Act 1" src="https://sketchfab.com/models/66a390fe436746ee8bc1a124280a97e9/embed?autostart=0&ui_theme=dark" allow="autoplay; fullscreen; xr-spatial-tracking" allowfullscreen></iframe><div class="card-tag">HOUSE</div></div>
+          <div class="model-card-body"><span>#012 / VERIFIED 3D</span><h3>House Hello Neighbor Act 1</h3><p>Hamza Sahmoudi · Sketchfab</p><button class="open-model">OPEN 3D ↗</button></div>
+        </article>
+<article class="model-card-item reveal" data-kind="3d" data-uid="2829dfa342294138b8eccc01a08b75d3" data-title="Hello Neighbor Houses" data-author="AdamNeverStopsGaming">
+          <div class="model-thumb"><iframe loading="lazy" title="Hello Neighbor Houses" src="https://sketchfab.com/models/2829dfa342294138b8eccc01a08b75d3/embed?autostart=0&ui_theme=dark" allow="autoplay; fullscreen; xr-spatial-tracking" allowfullscreen></iframe><div class="card-tag">ENVIRONMENT</div></div>
+          <div class="model-card-body"><span>#013 / VERIFIED 3D</span><h3>Hello Neighbor Houses</h3><p>AdamNeverStopsGaming · Sketchfab</p><button class="open-model">OPEN 3D ↗</button></div>
+        </article>
+<article class="model-card-item reveal" data-kind="3d" data-uid="74dba9488756440c870ced4686581cb1" data-title="Early Prototype House" data-author="Pradzuhs">
+          <div class="model-thumb"><iframe loading="lazy" title="Early Prototype House" src="https://sketchfab.com/models/74dba9488756440c870ced4686581cb1/embed?autostart=0&ui_theme=dark" allow="autoplay; fullscreen; xr-spatial-tracking" allowfullscreen></iframe><div class="card-tag">HOUSE</div></div>
+          <div class="model-card-body"><span>#014 / VERIFIED 3D</span><h3>Early Prototype House</h3><p>Pradzuhs · Sketchfab</p><button class="open-model">OPEN 3D ↗</button></div>
+        </article>
+<article class="model-card-item reveal" data-kind="3d" data-uid="a949b9071be94c45ae464d8a66ab34f1" data-title="Hello Neighbor 2 Visitor" data-author="Dynamic Pixels">
+          <div class="model-thumb"><iframe loading="lazy" title="Hello Neighbor 2 Visitor" src="https://sketchfab.com/models/a949b9071be94c45ae464d8a66ab34f1/embed?autostart=0&ui_theme=dark" allow="autoplay; fullscreen; xr-spatial-tracking" allowfullscreen></iframe><div class="card-tag">CHARACTER</div></div>
+          <div class="model-card-body"><span>#015 / VERIFIED 3D</span><h3>Hello Neighbor 2 Visitor</h3><p>Dynamic Pixels · Sketchfab</p><button class="open-model">OPEN 3D ↗</button></div>
+        </article>
+<article class="model-card-item reveal" data-kind="3d" data-uid="713999243034412785c2d045548b69a2" data-title="Hello Neighbor 2 Neighbor" data-author="Heidyn">
+          <div class="model-thumb"><iframe loading="lazy" title="Hello Neighbor 2 Neighbor" src="https://sketchfab.com/models/713999243034412785c2d045548b69a2/embed?autostart=0&ui_theme=dark" allow="autoplay; fullscreen; xr-spatial-tracking" allowfullscreen></iframe><div class="card-tag">CHARACTER</div></div>
+          <div class="model-card-body"><span>#016 / VERIFIED 3D</span><h3>Hello Neighbor 2 Neighbor</h3><p>Heidyn · Sketchfab</p><button class="open-model">OPEN 3D ↗</button></div>
+        </article>
+<article class="model-card-item reveal" data-kind="3d" data-uid="fdca56b48b65416ba7c2130b42a10abd" data-title="HN2 Mr Peterson" data-author="pimpoplaysgamestudios">
+          <div class="model-thumb"><iframe loading="lazy" title="HN2 Mr Peterson" src="https://sketchfab.com/models/fdca56b48b65416ba7c2130b42a10abd/embed?autostart=0&ui_theme=dark" allow="autoplay; fullscreen; xr-spatial-tracking" allowfullscreen></iframe><div class="card-tag">CHARACTER</div></div>
+          <div class="model-card-body"><span>#017 / VERIFIED 3D</span><h3>HN2 Mr Peterson</h3><p>pimpoplaysgamestudios · Sketchfab</p><button class="open-model">OPEN 3D ↗</button></div>
+        </article>
+<article class="model-card-item reveal" data-kind="3d" data-uid="6b09b86f1d4e4a488547c7e26c38f145" data-title="HN2 Mr Peterson Alt" data-author="kiplingernathan7">
+          <div class="model-thumb"><iframe loading="lazy" title="HN2 Mr Peterson Alt" src="https://sketchfab.com/models/6b09b86f1d4e4a488547c7e26c38f145/embed?autostart=0&ui_theme=dark" allow="autoplay; fullscreen; xr-spatial-tracking" allowfullscreen></iframe><div class="card-tag">CHARACTER</div></div>
+          <div class="model-card-body"><span>#018 / VERIFIED 3D</span><h3>HN2 Mr Peterson Alt</h3><p>kiplingernathan7 · Sketchfab</p><button class="open-model">OPEN 3D ↗</button></div>
+        </article>
+<article class="model-card-item reveal" data-kind="3d" data-uid="baefd15a466a422798d17305eb64c44a" data-title="Hello Neighbor 3 Neighbor" data-author="Artem25profi">
+          <div class="model-thumb"><iframe loading="lazy" title="Hello Neighbor 3 Neighbor" src="https://sketchfab.com/models/baefd15a466a422798d17305eb64c44a/embed?autostart=0&ui_theme=dark" allow="autoplay; fullscreen; xr-spatial-tracking" allowfullscreen></iframe><div class="card-tag">CHARACTER</div></div>
+          <div class="model-card-body"><span>#019 / VERIFIED 3D</span><h3>Hello Neighbor 3 Neighbor</h3><p>Artem25profi · Sketchfab</p><button class="open-model">OPEN 3D ↗</button></div>
+        </article>
+<article class="model-card-item reveal" data-kind="3d" data-uid="905d7371110147109298524a885e0c37" data-title="Secret Neighbor Inventor" data-author="morsita">
+          <div class="model-thumb"><iframe loading="lazy" title="Secret Neighbor Inventor" src="https://sketchfab.com/models/905d7371110147109298524a885e0c37/embed?autostart=0&ui_theme=dark" allow="autoplay; fullscreen; xr-spatial-tracking" allowfullscreen></iframe><div class="card-tag">CHARACTER</div></div>
+          <div class="model-card-body"><span>#020 / VERIFIED 3D</span><h3>Secret Neighbor Inventor</h3><p>morsita · Sketchfab</p><button class="open-model">OPEN 3D ↗</button></div>
+        </article>
+<article class="model-card-item reveal" data-kind="3d" data-uid="26940219bc54499a86c0c69ed42695f4" data-title="Secret Neighbor Bagger" data-author="Matt2">
+          <div class="model-thumb"><iframe loading="lazy" title="Secret Neighbor Bagger" src="https://sketchfab.com/models/26940219bc54499a86c0c69ed42695f4/embed?autostart=0&ui_theme=dark" allow="autoplay; fullscreen; xr-spatial-tracking" allowfullscreen></iframe><div class="card-tag">CHARACTER</div></div>
+          <div class="model-card-body"><span>#021 / VERIFIED 3D</span><h3>Secret Neighbor Bagger</h3><p>Matt2 · Sketchfab</p><button class="open-model">OPEN 3D ↗</button></div>
+        </article>
+<article class="model-card-item reveal" data-kind="3d" data-uid="31dac70f00c446949f08ee241b7a06a6" data-title="Bear Trap" data-author="Viktor™">
+          <div class="model-thumb"><iframe loading="lazy" title="Bear Trap" src="https://sketchfab.com/models/31dac70f00c446949f08ee241b7a06a6/embed?autostart=0&ui_theme=dark" allow="autoplay; fullscreen; xr-spatial-tracking" allowfullscreen></iframe><div class="card-tag">PROP</div></div>
+          <div class="model-card-body"><span>#022 / VERIFIED 3D</span><h3>Bear Trap</h3><p>Viktor™ · Sketchfab</p><button class="open-model">OPEN 3D ↗</button></div>
+        </article>
+<article class="model-card-item reveal" data-kind="3d" data-uid="6853e0fcabaa42e58b0601a6c77fdd6e" data-title="Hello Neighbor Door" data-author="Kriz Faerson">
+          <div class="model-thumb"><iframe loading="lazy" title="Hello Neighbor Door" src="https://sketchfab.com/models/6853e0fcabaa42e58b0601a6c77fdd6e/embed?autostart=0&ui_theme=dark" allow="autoplay; fullscreen; xr-spatial-tracking" allowfullscreen></iframe><div class="card-tag">PROP</div></div>
+          <div class="model-card-body"><span>#023 / VERIFIED 3D</span><h3>Hello Neighbor Door</h3><p>Kriz Faerson · Sketchfab</p><button class="open-model">OPEN 3D ↗</button></div>
+        </article>
+<article class="model-card-item reveal" data-kind="3d" data-uid="4f6068d1dbb14483ab39d01ccc380513" data-title="Hello Neighbor Door Old" data-author="89120">
+          <div class="model-thumb"><iframe loading="lazy" title="Hello Neighbor Door Old" src="https://sketchfab.com/models/4f6068d1dbb14483ab39d01ccc380513/embed?autostart=0&ui_theme=dark" allow="autoplay; fullscreen; xr-spatial-tracking" allowfullscreen></iframe><div class="card-tag">PROP</div></div>
+          <div class="model-card-body"><span>#024 / VERIFIED 3D</span><h3>Hello Neighbor Door Old</h3><p>89120 · Sketchfab</p><button class="open-model">OPEN 3D ↗</button></div>
+        </article>
+<article class="model-card-item reveal" data-kind="3d" data-uid="ecd63fc9dffd40a0ac31c57da75786e0" data-title="Hello Neighbor Door Bell" data-author="89120">
+          <div class="model-thumb"><iframe loading="lazy" title="Hello Neighbor Door Bell" src="https://sketchfab.com/models/ecd63fc9dffd40a0ac31c57da75786e0/embed?autostart=0&ui_theme=dark" allow="autoplay; fullscreen; xr-spatial-tracking" allowfullscreen></iframe><div class="card-tag">PROP</div></div>
+          <div class="model-card-body"><span>#025 / VERIFIED 3D</span><h3>Hello Neighbor Door Bell</h3><p>89120 · Sketchfab</p><button class="open-model">OPEN 3D ↗</button></div>
+        </article>
+<article class="model-card-item reveal" data-kind="3d" data-uid="3521ac5a0dba475fa4220f8b3053a148" data-title="Hello Neighbor Bed" data-author="Juandaneitor master">
+          <div class="model-thumb"><iframe loading="lazy" title="Hello Neighbor Bed" src="https://sketchfab.com/models/3521ac5a0dba475fa4220f8b3053a148/embed?autostart=0&ui_theme=dark" allow="autoplay; fullscreen; xr-spatial-tracking" allowfullscreen></iframe><div class="card-tag">PROP</div></div>
+          <div class="model-card-body"><span>#026 / VERIFIED 3D</span><h3>Hello Neighbor Bed</h3><p>Juandaneitor master · Sketchfab</p><button class="open-model">OPEN 3D ↗</button></div>
+        </article>
+<article class="model-card-item reveal" data-kind="3d" data-uid="3419197877ab4b8184c4868737923dee" data-title="Hello Neighbor Camera" data-author="Juandaneitor master">
+          <div class="model-thumb"><iframe loading="lazy" title="Hello Neighbor Camera" src="https://sketchfab.com/models/3419197877ab4b8184c4868737923dee/embed?autostart=0&ui_theme=dark" allow="autoplay; fullscreen; xr-spatial-tracking" allowfullscreen></iframe><div class="card-tag">PROP</div></div>
+          <div class="model-card-body"><span>#027 / VERIFIED 3D</span><h3>Hello Neighbor Camera</h3><p>Juandaneitor master · Sketchfab</p><button class="open-model">OPEN 3D ↗</button></div>
+        </article>
+<article class="model-card-item reveal" data-kind="3d" data-uid="43ff8cab183748d8bf2d673071a2fd26" data-title="Hammer Hello Neighbor" data-author="theodorepeterson9213">
+          <div class="model-thumb"><iframe loading="lazy" title="Hammer Hello Neighbor" src="https://sketchfab.com/models/43ff8cab183748d8bf2d673071a2fd26/embed?autostart=0&ui_theme=dark" allow="autoplay; fullscreen; xr-spatial-tracking" allowfullscreen></iframe><div class="card-tag">PROP</div></div>
+          <div class="model-card-body"><span>#028 / VERIFIED 3D</span><h3>Hammer Hello Neighbor</h3><p>theodorepeterson9213 · Sketchfab</p><button class="open-model">OPEN 3D ↗</button></div>
+        </article>
+<article class="model-card-item reveal" data-kind="3d" data-uid="c013ff5246274596a245ba112ec37b52" data-title="Crowbar Hello Neighbor" data-author="Kriz Faerson">
+          <div class="model-thumb"><iframe loading="lazy" title="Crowbar Hello Neighbor" src="https://sketchfab.com/models/c013ff5246274596a245ba112ec37b52/embed?autostart=0&ui_theme=dark" allow="autoplay; fullscreen; xr-spatial-tracking" allowfullscreen></iframe><div class="card-tag">PROP</div></div>
+          <div class="model-card-body"><span>#029 / VERIFIED 3D</span><h3>Crowbar Hello Neighbor</h3><p>Kriz Faerson · Sketchfab</p><button class="open-model">OPEN 3D ↗</button></div>
+        </article>
+<article class="model-card-item reveal" data-kind="3d" data-uid="e8f2086125cc4b0cb68b814b126cae2f" data-title="Hello Neighbor Key Card" data-author="Youthful strawbewwy">
+          <div class="model-thumb"><iframe loading="lazy" title="Hello Neighbor Key Card" src="https://sketchfab.com/models/e8f2086125cc4b0cb68b814b126cae2f/embed?autostart=0&ui_theme=dark" allow="autoplay; fullscreen; xr-spatial-tracking" allowfullscreen></iframe><div class="card-tag">PROP</div></div>
+          <div class="model-card-body"><span>#030 / VERIFIED 3D</span><h3>Hello Neighbor Key Card</h3><p>Youthful strawbewwy · Sketchfab</p><button class="open-model">OPEN 3D ↗</button></div>
+        </article>
+<article class="model-card-item reveal" data-kind="3d" data-uid="16a29b6c5648405596a42309bfc27dc8" data-title="Hello Neighbor TV" data-author="light game">
+          <div class="model-thumb"><iframe loading="lazy" title="Hello Neighbor TV" src="https://sketchfab.com/models/16a29b6c5648405596a42309bfc27dc8/embed?autostart=0&ui_theme=dark" allow="autoplay; fullscreen; xr-spatial-tracking" allowfullscreen></iframe><div class="card-tag">PROP</div></div>
+          <div class="model-card-body"><span>#031 / VERIFIED 3D</span><h3>Hello Neighbor TV</h3><p>light game · Sketchfab</p><button class="open-model">OPEN 3D ↗</button></div>
+        </article>
+<article class="model-card-item reveal" data-kind="3d" data-uid="a20fc7e16f4c4842a4212daff04eee46" data-title="Hospital Bed" data-author="Youthful strawbewwy">
+          <div class="model-thumb"><iframe loading="lazy" title="Hospital Bed" src="https://sketchfab.com/models/a20fc7e16f4c4842a4212daff04eee46/embed?autostart=0&ui_theme=dark" allow="autoplay; fullscreen; xr-spatial-tracking" allowfullscreen></iframe><div class="card-tag">PROP</div></div>
+          <div class="model-card-body"><span>#032 / VERIFIED 3D</span><h3>Hospital Bed</h3><p>Youthful strawbewwy · Sketchfab</p><button class="open-model">OPEN 3D ↗</button></div>
+        </article>
+<article class="model-card-item reveal" data-kind="3d" data-uid="31cc4e88590245a194dba322acccb566" data-title="Prototype Crowbar" data-author="Artem25profi">
+          <div class="model-thumb"><iframe loading="lazy" title="Prototype Crowbar" src="https://sketchfab.com/models/31cc4e88590245a194dba322acccb566/embed?autostart=0&ui_theme=dark" allow="autoplay; fullscreen; xr-spatial-tracking" allowfullscreen></iframe><div class="card-tag">PROP</div></div>
+          <div class="model-card-body"><span>#033 / VERIFIED 3D</span><h3>Prototype Crowbar</h3><p>Artem25profi · Sketchfab</p><button class="open-model">OPEN 3D ↗</button></div>
+        </article>
+<article class="model-card-item reveal" data-kind="3d" data-uid="c6ad1ab552e840539a815d47dc6ce354" data-title="Masked Echoes Crowbar" data-author="Viktor™">
+          <div class="model-thumb"><iframe loading="lazy" title="Masked Echoes Crowbar" src="https://sketchfab.com/models/c6ad1ab552e840539a815d47dc6ce354/embed?autostart=0&ui_theme=dark" allow="autoplay; fullscreen; xr-spatial-tracking" allowfullscreen></iframe><div class="card-tag">PROP</div></div>
+          <div class="model-card-body"><span>#034 / VERIFIED 3D</span><h3>Masked Echoes Crowbar</h3><p>Viktor™ · Sketchfab</p><button class="open-model">OPEN 3D ↗</button></div>
+        </article>
+<article class="model-card-item reveal" data-kind="3d" data-uid="ad9624f12039401983eba7711342e216" data-title="Pre-Alpha Animation" data-author="Blender Studio™">
+          <div class="model-thumb"><iframe loading="lazy" title="Pre-Alpha Animation" src="https://sketchfab.com/models/ad9624f12039401983eba7711342e216/embed?autostart=0&ui_theme=dark" allow="autoplay; fullscreen; xr-spatial-tracking" allowfullscreen></iframe><div class="card-tag">ANIMATION</div></div>
+          <div class="model-card-body"><span>#035 / VERIFIED 3D</span><h3>Pre-Alpha Animation</h3><p>Blender Studio™ · Sketchfab</p><button class="open-model">OPEN 3D ↗</button></div>
+        </article>
+<article class="model-card-item reveal" data-kind="3d" data-uid="f259794aa958404d865bedd2d5b25f09" data-title="Hello Neighbor Intro Hammer" data-author="morsita">
+          <div class="model-thumb"><iframe loading="lazy" title="Hello Neighbor Intro Hammer" src="https://sketchfab.com/models/f259794aa958404d865bedd2d5b25f09/embed?autostart=0&ui_theme=dark" allow="autoplay; fullscreen; xr-spatial-tracking" allowfullscreen></iframe><div class="card-tag">ANIMATION</div></div>
+          <div class="model-card-body"><span>#036 / VERIFIED 3D</span><h3>Hello Neighbor Intro Hammer</h3><p>morsita · Sketchfab</p><button class="open-model">OPEN 3D ↗</button></div>
+        </article>
+<article class="model-card-item reveal" data-kind="3d" data-uid="0a7ae2e1857c4964925945a161c42a33" data-title="Hello Neighbor 2" data-author="nikitaigna0506">
+          <div class="model-thumb"><iframe loading="lazy" title="Hello Neighbor 2" src="https://sketchfab.com/models/0a7ae2e1857c4964925945a161c42a33/embed?autostart=0&ui_theme=dark" allow="autoplay; fullscreen; xr-spatial-tracking" allowfullscreen></iframe><div class="card-tag">ENVIRONMENT</div></div>
+          <div class="model-card-body"><span>#037 / VERIFIED 3D</span><h3>Hello Neighbor 2</h3><p>nikitaigna0506 · Sketchfab</p><button class="open-model">OPEN 3D ↗</button></div>
+        </article>
+<article class="model-card-item reveal indexed" data-kind="index" data-query="hello neighbor Reality Door (Download)">
+          <div class="index-thumb"><span>3D</span><b>038</b><i></i></div>
+          <div class="model-card-body"><span>#038 / INDEXED SOURCE</span><h3>Reality Door (Download)</h3><p>Prop · public Sketchfab index</p><a class="open-index" target="_blank" rel="noreferrer" href="https://sketchfab.com/search?type=models&q=hello%20neighbor%20Reality%20Door%20(Download)">OPEN SOURCE ↗</a></div>
+        </article>
+<article class="model-card-item reveal indexed" data-kind="index" data-query="hello neighbor Bear Trap">
+          <div class="index-thumb"><span>3D</span><b>039</b><i></i></div>
+          <div class="model-card-body"><span>#039 / INDEXED SOURCE</span><h3>Bear Trap</h3><p>Prop · public Sketchfab index</p><a class="open-index" target="_blank" rel="noreferrer" href="https://sketchfab.com/search?type=models&q=hello%20neighbor%20Bear%20Trap">OPEN SOURCE ↗</a></div>
+        </article>
+<article class="model-card-item reveal indexed" data-kind="index" data-query="hello neighbor Neighbor Remastered Texture">
+          <div class="index-thumb"><span>3D</span><b>040</b><i></i></div>
+          <div class="model-card-body"><span>#040 / INDEXED SOURCE</span><h3>Neighbor Remastered Texture</h3><p>Material · public Sketchfab index</p><a class="open-index" target="_blank" rel="noreferrer" href="https://sketchfab.com/search?type=models&q=hello%20neighbor%20Neighbor%20Remastered%20Texture">OPEN SOURCE ↗</a></div>
+        </article>
+<article class="model-card-item reveal indexed" data-kind="index" data-query="hello neighbor Used FlashLight">
+          <div class="index-thumb"><span>3D</span><b>041</b><i></i></div>
+          <div class="model-card-body"><span>#041 / INDEXED SOURCE</span><h3>Used FlashLight</h3><p>Prop · public Sketchfab index</p><a class="open-index" target="_blank" rel="noreferrer" href="https://sketchfab.com/search?type=models&q=hello%20neighbor%20Used%20FlashLight">OPEN SOURCE ↗</a></div>
+        </article>
+<article class="model-card-item reveal indexed" data-kind="index" data-query="hello neighbor Hello Neighbor Hammer">
+          <div class="index-thumb"><span>3D</span><b>042</b><i></i></div>
+          <div class="model-card-body"><span>#042 / INDEXED SOURCE</span><h3>Hello Neighbor Hammer</h3><p>Prop · public Sketchfab index</p><a class="open-index" target="_blank" rel="noreferrer" href="https://sketchfab.com/search?type=models&q=hello%20neighbor%20Hello%20Neighbor%20Hammer">OPEN SOURCE ↗</a></div>
+        </article>
+<article class="model-card-item reveal indexed" data-kind="index" data-query="hello neighbor Hello Neighbor TV">
+          <div class="index-thumb"><span>3D</span><b>043</b><i></i></div>
+          <div class="model-card-body"><span>#043 / INDEXED SOURCE</span><h3>Hello Neighbor TV</h3><p>Prop · public Sketchfab index</p><a class="open-index" target="_blank" rel="noreferrer" href="https://sketchfab.com/search?type=models&q=hello%20neighbor%20Hello%20Neighbor%20TV">OPEN SOURCE ↗</a></div>
+        </article>
+<article class="model-card-item reveal indexed" data-kind="index" data-query="hello neighbor Hello Neighbor Camera">
+          <div class="index-thumb"><span>3D</span><b>044</b><i></i></div>
+          <div class="model-card-body"><span>#044 / INDEXED SOURCE</span><h3>Hello Neighbor Camera</h3><p>Prop · public Sketchfab index</p><a class="open-index" target="_blank" rel="noreferrer" href="https://sketchfab.com/search?type=models&q=hello%20neighbor%20Hello%20Neighbor%20Camera">OPEN SOURCE ↗</a></div>
+        </article>
+<article class="model-card-item reveal indexed" data-kind="index" data-query="hello neighbor Hello Neighbor Milk">
+          <div class="index-thumb"><span>3D</span><b>045</b><i></i></div>
+          <div class="model-card-body"><span>#045 / INDEXED SOURCE</span><h3>Hello Neighbor Milk</h3><p>Prop · public Sketchfab index</p><a class="open-index" target="_blank" rel="noreferrer" href="https://sketchfab.com/search?type=models&q=hello%20neighbor%20Hello%20Neighbor%20Milk">OPEN SOURCE ↗</a></div>
+        </article>
+<article class="model-card-item reveal indexed" data-kind="index" data-query="hello neighbor Hello Neighbor Desk">
+          <div class="index-thumb"><span>3D</span><b>046</b><i></i></div>
+          <div class="model-card-body"><span>#046 / INDEXED SOURCE</span><h3>Hello Neighbor Desk</h3><p>Prop · public Sketchfab index</p><a class="open-index" target="_blank" rel="noreferrer" href="https://sketchfab.com/search?type=models&q=hello%20neighbor%20Hello%20Neighbor%20Desk">OPEN SOURCE ↗</a></div>
+        </article>
+<article class="model-card-item reveal indexed" data-kind="index" data-query="hello neighbor Hello Neighbor Lockpick">
+          <div class="index-thumb"><span>3D</span><b>047</b><i></i></div>
+          <div class="model-card-body"><span>#047 / INDEXED SOURCE</span><h3>Hello Neighbor Lockpick</h3><p>Prop · public Sketchfab index</p><a class="open-index" target="_blank" rel="noreferrer" href="https://sketchfab.com/search?type=models&q=hello%20neighbor%20Hello%20Neighbor%20Lockpick">OPEN SOURCE ↗</a></div>
+        </article>
+<article class="model-card-item reveal indexed" data-kind="index" data-query="hello neighbor Hello Neighbor Rifle">
+          <div class="index-thumb"><span>3D</span><b>048</b><i></i></div>
+          <div class="model-card-body"><span>#048 / INDEXED SOURCE</span><h3>Hello Neighbor Rifle</h3><p>Prop · public Sketchfab index</p><a class="open-index" target="_blank" rel="noreferrer" href="https://sketchfab.com/search?type=models&q=hello%20neighbor%20Hello%20Neighbor%20Rifle">OPEN SOURCE ↗</a></div>
+        </article>
+<article class="model-card-item reveal indexed" data-kind="index" data-query="hello neighbor Hello Neighbor Tree">
+          <div class="index-thumb"><span>3D</span><b>049</b><i></i></div>
+          <div class="model-card-body"><span>#049 / INDEXED SOURCE</span><h3>Hello Neighbor Tree</h3><p>Environment · public Sketchfab index</p><a class="open-index" target="_blank" rel="noreferrer" href="https://sketchfab.com/search?type=models&q=hello%20neighbor%20Hello%20Neighbor%20Tree">OPEN SOURCE ↗</a></div>
+        </article>
+<article class="model-card-item reveal indexed" data-kind="index" data-query="hello neighbor Hello Neighbor Kid Player">
+          <div class="index-thumb"><span>3D</span><b>050</b><i></i></div>
+          <div class="model-card-body"><span>#050 / INDEXED SOURCE</span><h3>Hello Neighbor Kid Player</h3><p>Character · public Sketchfab index</p><a class="open-index" target="_blank" rel="noreferrer" href="https://sketchfab.com/search?type=models&q=hello%20neighbor%20Hello%20Neighbor%20Kid%20Player">OPEN SOURCE ↗</a></div>
+        </article>
+<article class="model-card-item reveal indexed" data-kind="index" data-query="hello neighbor Crowbar">
+          <div class="index-thumb"><span>3D</span><b>051</b><i></i></div>
+          <div class="model-card-body"><span>#051 / INDEXED SOURCE</span><h3>Crowbar</h3><p>Prop · public Sketchfab index</p><a class="open-index" target="_blank" rel="noreferrer" href="https://sketchfab.com/search?type=models&q=hello%20neighbor%20Crowbar">OPEN SOURCE ↗</a></div>
+        </article>
+<article class="model-card-item reveal indexed" data-kind="index" data-query="hello neighbor Act 1 Nicky Roth">
+          <div class="index-thumb"><span>3D</span><b>052</b><i></i></div>
+          <div class="model-card-body"><span>#052 / INDEXED SOURCE</span><h3>Act 1 Nicky Roth</h3><p>Character · public Sketchfab index</p><a class="open-index" target="_blank" rel="noreferrer" href="https://sketchfab.com/search?type=models&q=hello%20neighbor%20Act%201%20Nicky%20Roth">OPEN SOURCE ↗</a></div>
+        </article>
+<article class="model-card-item reveal indexed" data-kind="index" data-query="hello neighbor Armchair 2">
+          <div class="index-thumb"><span>3D</span><b>053</b><i></i></div>
+          <div class="model-card-body"><span>#053 / INDEXED SOURCE</span><h3>Armchair 2</h3><p>Prop · public Sketchfab index</p><a class="open-index" target="_blank" rel="noreferrer" href="https://sketchfab.com/search?type=models&q=hello%20neighbor%20Armchair%202">OPEN SOURCE ↗</a></div>
+        </article>
+<article class="model-card-item reveal indexed" data-kind="index" data-query="hello neighbor Alarm Clock">
+          <div class="index-thumb"><span>3D</span><b>054</b><i></i></div>
+          <div class="model-card-body"><span>#054 / INDEXED SOURCE</span><h3>Alarm Clock</h3><p>Prop · public Sketchfab index</p><a class="open-index" target="_blank" rel="noreferrer" href="https://sketchfab.com/search?type=models&q=hello%20neighbor%20Alarm%20Clock">OPEN SOURCE ↗</a></div>
+        </article>
+<article class="model-card-item reveal indexed" data-kind="index" data-query="hello neighbor Latticle">
+          <div class="index-thumb"><span>3D</span><b>055</b><i></i></div>
+          <div class="model-card-body"><span>#055 / INDEXED SOURCE</span><h3>Latticle</h3><p>Environment · public Sketchfab index</p><a class="open-index" target="_blank" rel="noreferrer" href="https://sketchfab.com/search?type=models&q=hello%20neighbor%20Latticle">OPEN SOURCE ↗</a></div>
+        </article>
+<article class="model-card-item reveal indexed" data-kind="index" data-query="hello neighbor Hello Neighbor Crow">
+          <div class="index-thumb"><span>3D</span><b>056</b><i></i></div>
+          <div class="model-card-body"><span>#056 / INDEXED SOURCE</span><h3>Hello Neighbor Crow</h3><p>Creature · public Sketchfab index</p><a class="open-index" target="_blank" rel="noreferrer" href="https://sketchfab.com/search?type=models&q=hello%20neighbor%20Hello%20Neighbor%20Crow">OPEN SOURCE ↗</a></div>
+        </article>
+<article class="model-card-item reveal indexed" data-kind="index" data-query="hello neighbor Hello Neighbor Objects">
+          <div class="index-thumb"><span>3D</span><b>057</b><i></i></div>
+          <div class="model-card-body"><span>#057 / INDEXED SOURCE</span><h3>Hello Neighbor Objects</h3><p>Props · public Sketchfab index</p><a class="open-index" target="_blank" rel="noreferrer" href="https://sketchfab.com/search?type=models&q=hello%20neighbor%20Hello%20Neighbor%20Objects">OPEN SOURCE ↗</a></div>
+        </article>
+<article class="model-card-item reveal indexed" data-kind="index" data-query="hello neighbor Family Photo">
+          <div class="index-thumb"><span>3D</span><b>058</b><i></i></div>
+          <div class="model-card-body"><span>#058 / INDEXED SOURCE</span><h3>Family Photo</h3><p>Prop · public Sketchfab index</p><a class="open-index" target="_blank" rel="noreferrer" href="https://sketchfab.com/search?type=models&q=hello%20neighbor%20Family%20Photo">OPEN SOURCE ↗</a></div>
+        </article>
+<article class="model-card-item reveal indexed" data-kind="index" data-query="hello neighbor Key Card">
+          <div class="index-thumb"><span>3D</span><b>059</b><i></i></div>
+          <div class="model-card-body"><span>#059 / INDEXED SOURCE</span><h3>Key Card</h3><p>Prop · public Sketchfab index</p><a class="open-index" target="_blank" rel="noreferrer" href="https://sketchfab.com/search?type=models&q=hello%20neighbor%20Key%20Card">OPEN SOURCE ↗</a></div>
+        </article>
+<article class="model-card-item reveal indexed" data-kind="index" data-query="hello neighbor Door">
+          <div class="index-thumb"><span>3D</span><b>060</b><i></i></div>
+          <div class="model-card-body"><span>#060 / INDEXED SOURCE</span><h3>Door</h3><p>Prop · public Sketchfab index</p><a class="open-index" target="_blank" rel="noreferrer" href="https://sketchfab.com/search?type=models&q=hello%20neighbor%20Door">OPEN SOURCE ↗</a></div>
+        </article>
+<article class="model-card-item reveal indexed" data-kind="index" data-query="hello neighbor TV + Video VHS">
+          <div class="index-thumb"><span>3D</span><b>061</b><i></i></div>
+          <div class="model-card-body"><span>#061 / INDEXED SOURCE</span><h3>TV + Video VHS</h3><p>Prop · public Sketchfab index</p><a class="open-index" target="_blank" rel="noreferrer" href="https://sketchfab.com/search?type=models&q=hello%20neighbor%20TV%20+%20Video%20VHS">OPEN SOURCE ↗</a></div>
+        </article>
+<article class="model-card-item reveal indexed" data-kind="index" data-query="hello neighbor Box — Open">
+          <div class="index-thumb"><span>3D</span><b>062</b><i></i></div>
+          <div class="model-card-body"><span>#062 / INDEXED SOURCE</span><h3>Box — Open</h3><p>Prop · public Sketchfab index</p><a class="open-index" target="_blank" rel="noreferrer" href="https://sketchfab.com/search?type=models&q=hello%20neighbor%20Box%20—%20Open">OPEN SOURCE ↗</a></div>
+        </article>
+<article class="model-card-item reveal indexed" data-kind="index" data-query="hello neighbor Rack — Old Art">
+          <div class="index-thumb"><span>3D</span><b>063</b><i></i></div>
+          <div class="model-card-body"><span>#063 / INDEXED SOURCE</span><h3>Rack — Old Art</h3><p>Prop · public Sketchfab index</p><a class="open-index" target="_blank" rel="noreferrer" href="https://sketchfab.com/search?type=models&q=hello%20neighbor%20Rack%20—%20Old%20Art">OPEN SOURCE ↗</a></div>
+        </article>
+<article class="model-card-item reveal indexed" data-kind="index" data-query="hello neighbor Locks">
+          <div class="index-thumb"><span>3D</span><b>064</b><i></i></div>
+          <div class="model-card-body"><span>#064 / INDEXED SOURCE</span><h3>Locks</h3><p>Prop · public Sketchfab index</p><a class="open-index" target="_blank" rel="noreferrer" href="https://sketchfab.com/search?type=models&q=hello%20neighbor%20Locks">OPEN SOURCE ↗</a></div>
+        </article>
+<article class="model-card-item reveal indexed" data-kind="index" data-query="hello neighbor Nicky&#x27;s House Alpha 2">
+          <div class="index-thumb"><span>3D</span><b>065</b><i></i></div>
+          <div class="model-card-body"><span>#065 / INDEXED SOURCE</span><h3>Nicky&#x27;s House Alpha 2</h3><p>House · public Sketchfab index</p><a class="open-index" target="_blank" rel="noreferrer" href="https://sketchfab.com/search?type=models&q=hello%20neighbor%20Nicky&#x27;s%20House%20Alpha%202">OPEN SOURCE ↗</a></div>
+        </article>
+<article class="model-card-item reveal indexed" data-kind="index" data-query="hello neighbor OldArt Cupboard">
+          <div class="index-thumb"><span>3D</span><b>066</b><i></i></div>
+          <div class="model-card-body"><span>#066 / INDEXED SOURCE</span><h3>OldArt Cupboard</h3><p>Prop · public Sketchfab index</p><a class="open-index" target="_blank" rel="noreferrer" href="https://sketchfab.com/search?type=models&q=hello%20neighbor%20OldArt%20Cupboard">OPEN SOURCE ↗</a></div>
+        </article>
+<article class="model-card-item reveal indexed" data-kind="index" data-query="hello neighbor OldArt TV + Remote">
+          <div class="index-thumb"><span>3D</span><b>067</b><i></i></div>
+          <div class="model-card-body"><span>#067 / INDEXED SOURCE</span><h3>OldArt TV + Remote</h3><p>Prop · public Sketchfab index</p><a class="open-index" target="_blank" rel="noreferrer" href="https://sketchfab.com/search?type=models&q=hello%20neighbor%20OldArt%20TV%20+%20Remote">OPEN SOURCE ↗</a></div>
+        </article>
+<article class="model-card-item reveal indexed" data-kind="index" data-query="hello neighbor Flower Beta">
+          <div class="index-thumb"><span>3D</span><b>068</b><i></i></div>
+          <div class="model-card-body"><span>#068 / INDEXED SOURCE</span><h3>Flower Beta</h3><p>Environment · public Sketchfab index</p><a class="open-index" target="_blank" rel="noreferrer" href="https://sketchfab.com/search?type=models&q=hello%20neighbor%20Flower%20Beta">OPEN SOURCE ↗</a></div>
+        </article>
+<article class="model-card-item reveal indexed" data-kind="index" data-query="hello neighbor OldArt Commode">
+          <div class="index-thumb"><span>3D</span><b>069</b><i></i></div>
+          <div class="model-card-body"><span>#069 / INDEXED SOURCE</span><h3>OldArt Commode</h3><p>Prop · public Sketchfab index</p><a class="open-index" target="_blank" rel="noreferrer" href="https://sketchfab.com/search?type=models&q=hello%20neighbor%20OldArt%20Commode">OPEN SOURCE ↗</a></div>
+        </article>
+<article class="model-card-item reveal indexed" data-kind="index" data-query="hello neighbor Old Sofa">
+          <div class="index-thumb"><span>3D</span><b>070</b><i></i></div>
+          <div class="model-card-body"><span>#070 / INDEXED SOURCE</span><h3>Old Sofa</h3><p>Prop · public Sketchfab index</p><a class="open-index" target="_blank" rel="noreferrer" href="https://sketchfab.com/search?type=models&q=hello%20neighbor%20Old%20Sofa">OPEN SOURCE ↗</a></div>
+        </article>
+<article class="model-card-item reveal indexed" data-kind="index" data-query="hello neighbor Stuff Module Pack — Part 1">
+          <div class="index-thumb"><span>3D</span><b>071</b><i></i></div>
+          <div class="model-card-body"><span>#071 / INDEXED SOURCE</span><h3>Stuff Module Pack — Part 1</h3><p>Props · public Sketchfab index</p><a class="open-index" target="_blank" rel="noreferrer" href="https://sketchfab.com/search?type=models&q=hello%20neighbor%20Stuff%20Module%20Pack%20—%20Part%201">OPEN SOURCE ↗</a></div>
+        </article>
+<article class="model-card-item reveal indexed" data-kind="index" data-query="hello neighbor Fire Extinguisher">
+          <div class="index-thumb"><span>3D</span><b>072</b><i></i></div>
+          <div class="model-card-body"><span>#072 / INDEXED SOURCE</span><h3>Fire Extinguisher</h3><p>Prop · public Sketchfab index</p><a class="open-index" target="_blank" rel="noreferrer" href="https://sketchfab.com/search?type=models&q=hello%20neighbor%20Fire%20Extinguisher">OPEN SOURCE ↗</a></div>
+        </article>
+<article class="model-card-item reveal indexed" data-kind="index" data-query="hello neighbor Secret Neighbor Rocket Launch Table">
+          <div class="index-thumb"><span>3D</span><b>073</b><i></i></div>
+          <div class="model-card-body"><span>#073 / INDEXED SOURCE</span><h3>Secret Neighbor Rocket Launch Table</h3><p>Prop · public Sketchfab index</p><a class="open-index" target="_blank" rel="noreferrer" href="https://sketchfab.com/search?type=models&q=hello%20neighbor%20Secret%20Neighbor%20Rocket%20Launch%20Table">OPEN SOURCE ↗</a></div>
+        </article>
+<article class="model-card-item reveal indexed" data-kind="index" data-query="hello neighbor Stuff Module Pack — Part 2">
+          <div class="index-thumb"><span>3D</span><b>074</b><i></i></div>
+          <div class="model-card-body"><span>#074 / INDEXED SOURCE</span><h3>Stuff Module Pack — Part 2</h3><p>Props · public Sketchfab index</p><a class="open-index" target="_blank" rel="noreferrer" href="https://sketchfab.com/search?type=models&q=hello%20neighbor%20Stuff%20Module%20Pack%20—%20Part%202">OPEN SOURCE ↗</a></div>
+        </article>
+<article class="model-card-item reveal indexed" data-kind="index" data-query="hello neighbor Hello Neighbor 2 School Bus">
+          <div class="index-thumb"><span>3D</span><b>075</b><i></i></div>
+          <div class="model-card-body"><span>#075 / INDEXED SOURCE</span><h3>Hello Neighbor 2 School Bus</h3><p>Vehicle · public Sketchfab index</p><a class="open-index" target="_blank" rel="noreferrer" href="https://sketchfab.com/search?type=models&q=hello%20neighbor%20Hello%20Neighbor%202%20School%20Bus">OPEN SOURCE ↗</a></div>
+        </article>
+<article class="model-card-item reveal indexed" data-kind="index" data-query="hello neighbor Key Lock">
+          <div class="index-thumb"><span>3D</span><b>076</b><i></i></div>
+          <div class="model-card-body"><span>#076 / INDEXED SOURCE</span><h3>Key Lock</h3><p>Prop · public Sketchfab index</p><a class="open-index" target="_blank" rel="noreferrer" href="https://sketchfab.com/search?type=models&q=hello%20neighbor%20Key%20Lock">OPEN SOURCE ↗</a></div>
+        </article>
+<article class="model-card-item reveal indexed" data-kind="index" data-query="hello neighbor RR Key Lock">
+          <div class="index-thumb"><span>3D</span><b>077</b><i></i></div>
+          <div class="model-card-body"><span>#077 / INDEXED SOURCE</span><h3>RR Key Lock</h3><p>Prop · public Sketchfab index</p><a class="open-index" target="_blank" rel="noreferrer" href="https://sketchfab.com/search?type=models&q=hello%20neighbor%20RR%20Key%20Lock">OPEN SOURCE ↗</a></div>
+        </article>
+<article class="model-card-item reveal indexed" data-kind="index" data-query="hello neighbor Cardboard Box">
+          <div class="index-thumb"><span>3D</span><b>078</b><i></i></div>
+          <div class="model-card-body"><span>#078 / INDEXED SOURCE</span><h3>Cardboard Box</h3><p>Prop · public Sketchfab index</p><a class="open-index" target="_blank" rel="noreferrer" href="https://sketchfab.com/search?type=models&q=hello%20neighbor%20Cardboard%20Box">OPEN SOURCE ↗</a></div>
+        </article>
+<article class="model-card-item reveal indexed" data-kind="index" data-query="hello neighbor Old Wheel">
+          <div class="index-thumb"><span>3D</span><b>079</b><i></i></div>
+          <div class="model-card-body"><span>#079 / INDEXED SOURCE</span><h3>Old Wheel</h3><p>Prop · public Sketchfab index</p><a class="open-index" target="_blank" rel="noreferrer" href="https://sketchfab.com/search?type=models&q=hello%20neighbor%20Old%20Wheel">OPEN SOURCE ↗</a></div>
+        </article>
+<article class="model-card-item reveal indexed" data-kind="index" data-query="hello neighbor Old Nightstand">
+          <div class="index-thumb"><span>3D</span><b>080</b><i></i></div>
+          <div class="model-card-body"><span>#080 / INDEXED SOURCE</span><h3>Old Nightstand</h3><p>Prop · public Sketchfab index</p><a class="open-index" target="_blank" rel="noreferrer" href="https://sketchfab.com/search?type=models&q=hello%20neighbor%20Old%20Nightstand">OPEN SOURCE ↗</a></div>
+        </article>
+<article class="model-card-item reveal indexed" data-kind="index" data-query="hello neighbor Binoculars">
+          <div class="index-thumb"><span>3D</span><b>081</b><i></i></div>
+          <div class="model-card-body"><span>#081 / INDEXED SOURCE</span><h3>Binoculars</h3><p>Prop · public Sketchfab index</p><a class="open-index" target="_blank" rel="noreferrer" href="https://sketchfab.com/search?type=models&q=hello%20neighbor%20Binoculars">OPEN SOURCE ↗</a></div>
+        </article>
+<article class="model-card-item reveal indexed" data-kind="index" data-query="hello neighbor Toolbox">
+          <div class="index-thumb"><span>3D</span><b>082</b><i></i></div>
+          <div class="model-card-body"><span>#082 / INDEXED SOURCE</span><h3>Toolbox</h3><p>Prop · public Sketchfab index</p><a class="open-index" target="_blank" rel="noreferrer" href="https://sketchfab.com/search?type=models&q=hello%20neighbor%20Toolbox">OPEN SOURCE ↗</a></div>
+        </article>
+<article class="model-card-item reveal indexed" data-kind="index" data-query="hello neighbor Angry Neighbor Stan">
+          <div class="index-thumb"><span>3D</span><b>083</b><i></i></div>
+          <div class="model-card-body"><span>#083 / INDEXED SOURCE</span><h3>Angry Neighbor Stan</h3><p>Character · public Sketchfab index</p><a class="open-index" target="_blank" rel="noreferrer" href="https://sketchfab.com/search?type=models&q=hello%20neighbor%20Angry%20Neighbor%20Stan">OPEN SOURCE ↗</a></div>
+        </article>
+<article class="model-card-item reveal indexed" data-kind="index" data-query="hello neighbor Stan&#x27;s House">
+          <div class="index-thumb"><span>3D</span><b>084</b><i></i></div>
+          <div class="model-card-body"><span>#084 / INDEXED SOURCE</span><h3>Stan&#x27;s House</h3><p>House · public Sketchfab index</p><a class="open-index" target="_blank" rel="noreferrer" href="https://sketchfab.com/search?type=models&q=hello%20neighbor%20Stan&#x27;s%20House">OPEN SOURCE ↗</a></div>
+        </article>
+<article class="model-card-item reveal indexed" data-kind="index" data-query="hello neighbor Protagonist Hello Neighbor">
+          <div class="index-thumb"><span>3D</span><b>085</b><i></i></div>
+          <div class="model-card-body"><span>#085 / INDEXED SOURCE</span><h3>Protagonist Hello Neighbor</h3><p>Character · public Sketchfab index</p><a class="open-index" target="_blank" rel="noreferrer" href="https://sketchfab.com/search?type=models&q=hello%20neighbor%20Protagonist%20Hello%20Neighbor">OPEN SOURCE ↗</a></div>
+        </article>
+<article class="model-card-item reveal indexed" data-kind="index" data-query="hello neighbor Copper Key">
+          <div class="index-thumb"><span>3D</span><b>086</b><i></i></div>
+          <div class="model-card-body"><span>#086 / INDEXED SOURCE</span><h3>Copper Key</h3><p>Prop · public Sketchfab index</p><a class="open-index" target="_blank" rel="noreferrer" href="https://sketchfab.com/search?type=models&q=hello%20neighbor%20Copper%20Key">OPEN SOURCE ↗</a></div>
+        </article>
+<article class="model-card-item reveal indexed" data-kind="index" data-query="hello neighbor Hello Neighbor House Comparison">
+          <div class="index-thumb"><span>3D</span><b>087</b><i></i></div>
+          <div class="model-card-body"><span>#087 / INDEXED SOURCE</span><h3>Hello Neighbor House Comparison</h3><p>Environment · public Sketchfab index</p><a class="open-index" target="_blank" rel="noreferrer" href="https://sketchfab.com/search?type=models&q=hello%20neighbor%20Hello%20Neighbor%20House%20Comparison">OPEN SOURCE ↗</a></div>
+        </article>
+<article class="model-card-item reveal indexed" data-kind="index" data-query="hello neighbor Secret Neighbor Model">
+          <div class="index-thumb"><span>3D</span><b>088</b><i></i></div>
+          <div class="model-card-body"><span>#088 / INDEXED SOURCE</span><h3>Secret Neighbor Model</h3><p>Character · public Sketchfab index</p><a class="open-index" target="_blank" rel="noreferrer" href="https://sketchfab.com/search?type=models&q=hello%20neighbor%20Secret%20Neighbor%20Model">OPEN SOURCE ↗</a></div>
+        </article>
+<article class="model-card-item reveal indexed" data-kind="index" data-query="hello neighbor Pre-Alpha Player">
+          <div class="index-thumb"><span>3D</span><b>089</b><i></i></div>
+          <div class="model-card-body"><span>#089 / INDEXED SOURCE</span><h3>Pre-Alpha Player</h3><p>Character · public Sketchfab index</p><a class="open-index" target="_blank" rel="noreferrer" href="https://sketchfab.com/search?type=models&q=hello%20neighbor%20Pre-Alpha%20Player">OPEN SOURCE ↗</a></div>
+        </article>
+<article class="model-card-item reveal indexed" data-kind="index" data-query="hello neighbor Hello Neighbor Alpha 2 Player">
+          <div class="index-thumb"><span>3D</span><b>090</b><i></i></div>
+          <div class="model-card-body"><span>#090 / INDEXED SOURCE</span><h3>Hello Neighbor Alpha 2 Player</h3><p>Character · public Sketchfab index</p><a class="open-index" target="_blank" rel="noreferrer" href="https://sketchfab.com/search?type=models&q=hello%20neighbor%20Hello%20Neighbor%20Alpha%202%20Player">OPEN SOURCE ↗</a></div>
+        </article>
+<article class="model-card-item reveal indexed" data-kind="index" data-query="hello neighbor Earlyhouse">
+          <div class="index-thumb"><span>3D</span><b>091</b><i></i></div>
+          <div class="model-card-body"><span>#091 / INDEXED SOURCE</span><h3>Earlyhouse</h3><p>House · public Sketchfab index</p><a class="open-index" target="_blank" rel="noreferrer" href="https://sketchfab.com/search?type=models&q=hello%20neighbor%20Earlyhouse">OPEN SOURCE ↗</a></div>
+        </article>
+<article class="model-card-item reveal indexed" data-kind="index" data-query="hello neighbor Devgamm Neighbor">
+          <div class="index-thumb"><span>3D</span><b>092</b><i></i></div>
+          <div class="model-card-body"><span>#092 / INDEXED SOURCE</span><h3>Devgamm Neighbor</h3><p>Character · public Sketchfab index</p><a class="open-index" target="_blank" rel="noreferrer" href="https://sketchfab.com/search?type=models&q=hello%20neighbor%20Devgamm%20Neighbor">OPEN SOURCE ↗</a></div>
+        </article>
+<article class="model-card-item reveal indexed" data-kind="index" data-query="hello neighbor Secret Neighbor Model">
+          <div class="index-thumb"><span>3D</span><b>093</b><i></i></div>
+          <div class="model-card-body"><span>#093 / INDEXED SOURCE</span><h3>Secret Neighbor Model</h3><p>Character · public Sketchfab index</p><a class="open-index" target="_blank" rel="noreferrer" href="https://sketchfab.com/search?type=models&q=hello%20neighbor%20Secret%20Neighbor%20Model">OPEN SOURCE ↗</a></div>
+        </article>
+<article class="model-card-item reveal indexed" data-kind="index" data-query="hello neighbor Alpha 1 Neighbor All Animations">
+          <div class="index-thumb"><span>3D</span><b>094</b><i></i></div>
+          <div class="model-card-body"><span>#094 / INDEXED SOURCE</span><h3>Alpha 1 Neighbor All Animations</h3><p>Animation · public Sketchfab index</p><a class="open-index" target="_blank" rel="noreferrer" href="https://sketchfab.com/search?type=models&q=hello%20neighbor%20Alpha%201%20Neighbor%20All%20Animations">OPEN SOURCE ↗</a></div>
+        </article>
+<article class="model-card-item reveal indexed" data-kind="index" data-query="hello neighbor Red Silver Lock">
+          <div class="index-thumb"><span>3D</span><b>095</b><i></i></div>
+          <div class="model-card-body"><span>#095 / INDEXED SOURCE</span><h3>Red Silver Lock</h3><p>Prop · public Sketchfab index</p><a class="open-index" target="_blank" rel="noreferrer" href="https://sketchfab.com/search?type=models&q=hello%20neighbor%20Red%20Silver%20Lock">OPEN SOURCE ↗</a></div>
+        </article>
+<article class="model-card-item reveal indexed" data-kind="index" data-query="hello neighbor Alpha 2 House">
+          <div class="index-thumb"><span>3D</span><b>096</b><i></i></div>
+          <div class="model-card-body"><span>#096 / INDEXED SOURCE</span><h3>Alpha 2 House</h3><p>House · public Sketchfab index</p><a class="open-index" target="_blank" rel="noreferrer" href="https://sketchfab.com/search?type=models&q=hello%20neighbor%20Alpha%202%20House">OPEN SOURCE ↗</a></div>
+        </article>
+<article class="model-card-item reveal indexed" data-kind="index" data-query="hello neighbor Neighbor Remastered HD">
+          <div class="index-thumb"><span>3D</span><b>097</b><i></i></div>
+          <div class="model-card-body"><span>#097 / INDEXED SOURCE</span><h3>Neighbor Remastered HD</h3><p>Character · public Sketchfab index</p><a class="open-index" target="_blank" rel="noreferrer" href="https://sketchfab.com/search?type=models&q=hello%20neighbor%20Neighbor%20Remastered%20HD">OPEN SOURCE ↗</a></div>
+        </article>
+<article class="model-card-item reveal indexed" data-kind="index" data-query="hello neighbor Quentin — Security Gameplay">
+          <div class="index-thumb"><span>3D</span><b>098</b><i></i></div>
+          <div class="model-card-body"><span>#098 / INDEXED SOURCE</span><h3>Quentin — Security Gameplay</h3><p>Character · public Sketchfab index</p><a class="open-index" target="_blank" rel="noreferrer" href="https://sketchfab.com/search?type=models&q=hello%20neighbor%20Quentin%20—%20Security%20Gameplay">OPEN SOURCE ↗</a></div>
+        </article>
+<article class="model-card-item reveal indexed" data-kind="index" data-query="hello neighbor Guest — Hello Guest Prototype">
+          <div class="index-thumb"><span>3D</span><b>099</b><i></i></div>
+          <div class="model-card-body"><span>#099 / INDEXED SOURCE</span><h3>Guest — Hello Guest Prototype</h3><p>Character · public Sketchfab index</p><a class="open-index" target="_blank" rel="noreferrer" href="https://sketchfab.com/search?type=models&q=hello%20neighbor%20Guest%20—%20Hello%20Guest%20Prototype">OPEN SOURCE ↗</a></div>
+        </article>
+<article class="model-card-item reveal indexed" data-kind="index" data-query="hello neighbor Man in the Hat">
+          <div class="index-thumb"><span>3D</span><b>100</b><i></i></div>
+          <div class="model-card-body"><span>#100 / INDEXED SOURCE</span><h3>Man in the Hat</h3><p>Character · public Sketchfab index</p><a class="open-index" target="_blank" rel="noreferrer" href="https://sketchfab.com/search?type=models&q=hello%20neighbor%20Man%20in%20the%20Hat">OPEN SOURCE ↗</a></div>
+        </article>
+<article class="model-card-item reveal indexed" data-kind="index" data-query="hello neighbor HN2 Announcement Trailer House v2">
+          <div class="index-thumb"><span>3D</span><b>101</b><i></i></div>
+          <div class="model-card-body"><span>#101 / INDEXED SOURCE</span><h3>HN2 Announcement Trailer House v2</h3><p>House · public Sketchfab index</p><a class="open-index" target="_blank" rel="noreferrer" href="https://sketchfab.com/search?type=models&q=hello%20neighbor%20HN2%20Announcement%20Trailer%20House%20v2">OPEN SOURCE ↗</a></div>
+        </article>
+<article class="model-card-item reveal indexed" data-kind="index" data-query="hello neighbor HN2 E3 Styled Museum">
+          <div class="index-thumb"><span>3D</span><b>102</b><i></i></div>
+          <div class="model-card-body"><span>#102 / INDEXED SOURCE</span><h3>HN2 E3 Styled Museum</h3><p>Environment · public Sketchfab index</p><a class="open-index" target="_blank" rel="noreferrer" href="https://sketchfab.com/search?type=models&q=hello%20neighbor%20HN2%20E3%20Styled%20Museum">OPEN SOURCE ↗</a></div>
+        </article>
+<article class="model-card-item reveal indexed" data-kind="index" data-query="hello neighbor City Raven">
+          <div class="index-thumb"><span>3D</span><b>103</b><i></i></div>
+          <div class="model-card-body"><span>#103 / INDEXED SOURCE</span><h3>City Raven</h3><p>Environment · public Sketchfab index</p><a class="open-index" target="_blank" rel="noreferrer" href="https://sketchfab.com/search?type=models&q=hello%20neighbor%20City%20Raven">OPEN SOURCE ↗</a></div>
+        </article>
+<article class="model-card-item reveal indexed" data-kind="index" data-query="hello neighbor Mr. Peterson — Nicky Diaries">
+          <div class="index-thumb"><span>3D</span><b>104</b><i></i></div>
+          <div class="model-card-body"><span>#104 / INDEXED SOURCE</span><h3>Mr. Peterson — Nicky Diaries</h3><p>Character · public Sketchfab index</p><a class="open-index" target="_blank" rel="noreferrer" href="https://sketchfab.com/search?type=models&q=hello%20neighbor%20Mr.%20Peterson%20—%20Nicky%20Diaries">OPEN SOURCE ↗</a></div>
+        </article>
+<article class="model-card-item reveal indexed" data-kind="index" data-query="hello neighbor HN2 Pointed Square Lock">
+          <div class="index-thumb"><span>3D</span><b>105</b><i></i></div>
+          <div class="model-card-body"><span>#105 / INDEXED SOURCE</span><h3>HN2 Pointed Square Lock</h3><p>Prop · public Sketchfab index</p><a class="open-index" target="_blank" rel="noreferrer" href="https://sketchfab.com/search?type=models&q=hello%20neighbor%20HN2%20Pointed%20Square%20Lock">OPEN SOURCE ↗</a></div>
+        </article></div>
+</section>
+
+<section id="world" class="world section">
+<div class="head reveal"><span>02 / WORLD SYSTEM</span><h2>THE CITY<br><em>IS WATCHING</em></h2></div>
+<div class="world-grid">
+<div class="world-tile big" data-tilt><div class="world-art art1"></div><span>RAVEN STREET</span><h3>WHERE<br>IT STARTED</h3><p>Слишком тихий район. Слишком много закрытых окон.</p></div>
+<div class="world-tile" data-tilt><div class="radar"></div><span>SCAN / 002</span><h3>HIDDEN<br>ROOMS</h3><p>Каждая дверь может вести в другую часть истории.</p></div>
+<div class="world-tile" data-tilt><div class="glitch-box">UNKNOWN</div><span>SCAN / 003</span><h3>PARALLEL<br>EVENTS</h3><p>Следы прошлого появляются там, где их быть не должно.</p></div>
+</div>
+</section>
+
+<section id="lore" class="lore section">
+<div class="lore-eye" data-tilt><div class="iris"></div><div class="pupil"></div></div>
+<div class="lore-copy reveal"><span>03 / CLASSIFIED LORE</span><h2>EVERY DOOR<br><em>REMEMBERS.</em></h2><p>Собирай улики, открывай скрытые файлы и строй собственные теории. Здесь можно расширять архив новыми главами без изменения дизайна.</p>
+<div class="stats"><div><b>27</b><small>CLUES</small></div><div><b>13</b><small>LOCATIONS</small></div><div><b>07</b><small>FILES</small></div></div><button class="btn red" id="archive">OPEN CLASSIFIED FILE ↗</button></div>
+</section>
+
+
+<section id="read" class="reading section">
+  <div class="head reveal"><span>07 / DEEP READ // ~10 MINUTES</span><h2>STAY<br><em>IN THE STORY.</em></h2><p>Здесь не просто «текст ради текста». Это длинный маршрут по вселенной: история района, дизайн дома, персонажи, предметы, свет, 3D и идеи того, куда можно развить Verse дальше.</p></div>
+  <div class="reading-layout"><div class="reading-index reveal"><div class="read-progress"><i id="readProgress"></i></div><a href="#read-1">01 / РАЙОН</a><a href="#read-2">02 / ДОМ</a><a href="#read-3">03 / СОСЕД</a><a href="#read-4">04 / АЛЬФЫ</a><a href="#read-5">05 / 3D</a><a href="#read-6">06 / СВЕТ</a><a href="#read-7">07 / ПРЕДМЕТЫ</a><a href="#read-8">08 / БУДУЩЕЕ</a><a href="#read-9">09 / ПОЧЕМУ</a></div><div class="reading-body">['<article class="read-block reveal" id="read-1"><div class="read-num">001</div><span>CHAPTER 01</span><h3>Район, который выглядит слишком спокойным</h3><p>Самая сильная сторона мира Hello Neighbor — не монстр за дверью, а ощущение обычного района, где что-то постепенно перестало быть обычным. Сначала ты видишь траву, белые заборы, машины, окна и соседний дом. Ничего не кричит о том, что перед тобой хоррор. Именно поэтому тревога работает сильнее: мозг успевает привыкнуть к безопасности, а потом начинает замечать странности.</p><p>В Neighborverse улица — не просто фон. Это система ориентиров. Дорога подсказывает расстояние, окна намекают на присутствие, лестницы создают вертикальный путь, а забор превращается в линию, которую хочется пересечь. Когда архитектура становится частью задач, ты начинаешь запоминать дом почти как реальное место.</p><p>Поэтому этот сайт построен по похожему принципу. Сначала он выглядит как красивый интерактивный портал. Потом появляются слои: 3D-модели, архив, трейлер, эффекты, скрытая мини-игра и фрагменты лора. Чем дольше ты остаёшься, тем больше элементов начинают связываться между собой. Это и есть идея проекта: не просто рассказать о Hello Neighbor, а сделать небольшую цифровую улицу, в которой хочется задержаться.</p></article>', '<article class="read-block reveal" id="read-2"><div class="read-num">002</div><span>CHAPTER 02</span><h3>Дом как головоломка</h3><p>Дом соседа работает потому, что не подчиняется одной простой логике. В обычной игре ты ожидаешь комнату, коридор, лестницу и дверь. Здесь же пространство ведёт себя как загадка. Одна и та же форма может означать разные вещи в зависимости от того, с какой стороны ты на неё смотришь.</p><p>Игрок начинает строить мысленную карту. Где окно? Где лестница? Где путь наверх? Что можно открыть? Что нужно сначала изменить? Когда предмет становится инструментом, архитектура превращается в язык. Именно поэтому разные версии дома так интересны даже сами по себе.</p><p>Ранние прототипы особенно хорошо показывают этот эффект. Они выглядят проще, но в них уже есть идея дома-лабиринта. Поздние версии становятся сложнее, появляются дополнительные этажи, необычные мосты и вертикальные связи. Вместо одной коробки получается почти машина для перемещения игрока.</p><p>В 3D-архиве ниже можно сравнить разные подходы к этому образу. Важно смотреть не только на стены и окна. Обрати внимание на силуэт, высоту, баланс выступов, положение лестниц и то, как дом взаимодействует с улицей. Иногда одна маленькая деталь лучше объясняет дизайн, чем целая страница текста.</p></article>', '<article class="read-block reveal" id="read-3"><div class="read-num">003</div><span>CHAPTER 03</span><h3>Почему сосед запоминается</h3><p>Персонаж работает не только благодаря внешности. Визуально он построен очень просто: узнаваемый силуэт, выраженное лицо, яркие детали одежды. Но запоминаемость появляется из-за поведения. Сосед не чувствуется статичным NPC. Он существует в пространстве и реагирует на присутствие игрока.</p><p>Это важная часть дизайна хоррора. Страх возникает не тогда, когда игрок видит врага, а когда понимает: враг может заметить игрока. После этого обычная дверь становится возможностью быть услышанным, окно превращается в точку риска, а шум приобретает значение.</p><p>Именно эту мысль мы переносим в интерфейс. 3D viewer здесь не просто декоративный. Он даёт ощущение наблюдения: камера вращается, свет меняет сцену, предмет можно приблизить. В мини-игре красная точка уже не выглядит просто элементом меню — после того как ты знаешь, что она скрывает, любой следующий взгляд на интерфейс становится немного подозрительным.</p><p>Хороший хоррор редко требует постоянных скримеров. Ему достаточно заставить тебя думать о том, что произошло секунду назад и что может произойти через секунду.</p></article>', '<article class="read-block reveal" id="read-4"><div class="read-num">004</div><span>CHAPTER 04</span><h3>Эпохи, альфы и разные лица дома</h3><p>История Hello Neighbor особенно интересна через изменения формы. Прототип, pre-alpha, alpha и релизные состояния отличаются не только текстурами. Они показывают, как одна идея проходила через множество итераций.</p><p>С ранними вариантами полезно смотреть на то, какие элементы остались. Некоторые формы исчезают, другие становятся крупнее, третьи получают новые функции. Это помогает увидеть игру не как законченный объект, а как процесс проектирования.</p><p>Поэтому архив проекта разделён не только на «персонажей» и «предметы». Здесь есть дома, ранние версии, окружение, пропсы, персонажи и анимации. Такой подход превращает набор моделей в маленькую коллекцию производственных следов.</p><p>Особенно интересны модели домов. Они показывают, как менялось ощущение масштаба. Один дом может казаться компактным с улицы, но стать огромным, когда ты видишь его сбоку. Другой использует высоту и дополнительные площадки, чтобы игрок воспринимал его почти как вертикальный город.</p><p>Если смотреть коллекцию медленно, появляется приятный эффект: начинаешь находить сходства между версиями, а потом уже сам замечаешь, что именно изменилось.</p></article>', '<article class="read-block reveal" id="read-5"><div class="read-num">005</div><span>CHAPTER 05</span><h3>Как читать 3D-модель</h3><p>3D-модель удобно воспринимать как документ. Сначала смотри на силуэт — он рассказывает о масштабе. Затем проверь крупные формы: крышу, стены, лестницы, окна, выступающие элементы. После этого переходи к материалам. Дерево и металл создают разные ощущения даже при одинаковой геометрии.</p><p>Следующий слой — свет. При мягком освещении дом кажется почти игрушечным. При жёстком контровом свете те же формы становятся тревожнее. Поэтому в viewer важно не просто вращать модель, а представлять разные сценарии: день, ночь, дождь, фонарь, окно, подвал.</p><p>В реальном 3D viewer можно заметить ещё одну вещь — техническую сторону. Иногда объект выглядит простым, но имеет неожиданно аккуратную топологию. Иногда огромная сцена построена из очень простых деталей. Для фанатского архива это особенно интересно: ты видишь не только «что изображено», но и «как это было собрано».</p><p>Попробуй выбрать одну модель и потратить на неё целую минуту. Вращай медленно, меняй масштаб, ищи окна, вторые входы, лестницы и детали, которые невозможно заметить в обычном скриншоте. Тогда 3D действительно начинает работать как исследование.</p></article>', '<article class="read-block reveal" id="read-6"><div class="read-num">006</div><span>CHAPTER 06</span><h3>Свет, туман и ощущение присутствия</h3><p>Большая часть атмосферы появляется не из геометрии, а из света. Один и тот же дом может быть весёлым утром, тревожным вечером и почти пугающим ночью. Поэтому в FX Lab собраны не случайные фильтры, а целая шкала настроения: fog, bloom, vignette, scanlines, chromatic aberration, glow, hologram и другие режимы.</p><p>Визуальные эффекты полезны ещё и потому, что создают переходы. Например, мягкий bloom делает сцену более кинематографичной. Резкий RGB split разрушает её целостность. Scanlines превращают современный интерфейс в аналоговую запись. Fisheye меняет ощущение расстояния. Камерный shake делает момент нестабильным.</p><p>Попробуй сначала выключить всё. Потом включи один эффект. Затем второй. Сравни ощущения. Это простой способ понять, почему хорошие визуальные эффекты не должны работать на максимальной мощности всё время.</p><p>В интерактивном дизайне важен контраст. Если каждый элемент шумит, ничего не выделяется. Поэтому спокойная часть страницы нужна так же сильно, как и самый яркий glitch. Тишина — тоже эффект.</p></article>', '<article class="read-block reveal" id="read-7"><div class="read-num">007</div><span>CHAPTER 07</span><h3>Как читать мир через предметы</h3><p>У Hello Neighbor есть особая магия маленьких объектов. Дверь, ключ, камера, выключатель, коробка, кровать, телевизор — всё это может казаться фоном до тех пор, пока не становится частью задачи. Тогда обычный предмет получает историю.</p><p>В 3D-архиве много таких моделей, и у каждой есть собственный контекст. Ключ — это доступ. Камера — контроль. Молоток — изменение пространства. Дверь — граница. Телевизор — информация. Эти значения можно воспринимать почти как символы.</p><p>Интересно смотреть, как предметы повторяются в разных версиях. Иногда форма меняется едва заметно. Иногда меняется материал или масштаб. Но функция остаётся. И именно эта стабильность помогает игроку чувствовать себя внутри одной вселенной.</p><p>Если хочешь провести здесь несколько минут осознанно, выбери пять объектов и придумай для каждого короткое правило: «ключ открывает», «камера следит», «дверь скрывает», «молоток меняет», «телевизор сообщает». Затем попробуй найти на странице визуальный элемент, который соответствует каждому правилу. Так сайт начинает читаться как головоломка.</p></article>', '<article class="read-block reveal" id="read-8"><div class="read-num">008</div><span>CHAPTER 08</span><h3>Что можно придумать дальше</h3><p>Neighborverse не должен останавливаться на архиве. Этот сайт специально устроен как база, которую можно расширять. В 3D-каталог можно добавлять новые модели, в Lore — новые главы, в Gallery — новые сцены, а в мини-игру — новые уровни.</p><p>Следующий логичный шаг — сделать настоящую цифровую карту Raven Brooks. На ней можно разместить районы, дома, секретные комнаты и точки, связанные с персонажами. Каждая точка могла бы открывать короткий ролик или 3D-модель.</p><p>Ещё интереснее — связать модели и лор. Открываешь дом, вращаешь его, нажимаешь на окно — и появляется заметка. Поворачиваешь на заднюю сторону — новая улика. Находишь предмет — открывается предложение в архиве. Тогда просмотр 3D превращается в игру.</p><p>Можно добавить и режим «ночной улицы»: дождь, туман, дальние фонари, шум и случайные события. Ещё одна идея — архив временных линий, где один и тот же дом показывается в нескольких версиях и между ними можно переключаться одним жестом.</p><p>Именно в этом и заключается смысл Verse: это не конечная страница, а место, которое можно постоянно дополнять.</p></article>', '<article class="read-block reveal" id="read-9"><div class="read-num">009</div><span>CHAPTER 09</span><h3>Почему хочется остаться ещё на десять минут</h3><p>Интересный сайт работает не потому, что на нём много элементов. Он работает, когда один элемент ведёт к следующему. Картинка вызывает вопрос. Вопрос ведёт к лору. Лор отправляет в 3D. 3D заставляет заметить деталь. Деталь приводит к пасхалке. Пасхалка открывает мини-игру. После игры хочется вернуться к предыдущей секции и посмотреть на неё уже другими глазами.</p><p>Именно так устроено это обновление. У страницы есть быстрый путь: посмотреть hero, нажать 3D и уйти. Но есть и длинный маршрут. Его можно читать, изучать модели, переключать эффекты, смотреть трейлер, искать скрытые элементы и постепенно складывать собственную версию истории.</p><p>Если ты дочитал до этого места, значит длинный формат действительно работает. Теперь вернись наверх и попробуй другой маршрут: выбери модель, найди предмет, открой трейлер, потом проверь архив. Возможно, ты обнаружишь, что некоторые визуальные детали повторяются.</p><p>А дальше начинается самое интересное: ты уже не просто читаешь сайт. Ты начинаешь его исследовать.</p></article>']</div></div>
+</section>
+
+<section id="gallery" class="gallery section">
+<div class="head reveal"><span>04 / VISUAL ARCHIVE</span><h2>FRAMES OF<br><em>THE UNKNOWN</em></h2></div>
+<div class="gallery-grid">
+<div class="photo p1" style="--img:url('assets/houses/house-01.jpg')"><span>FRAME 01</span><b>THE CLASSIC</b></div>
+<div class="photo p2" style="--img:url('assets/houses/house-02.png')"><span>FRAME 02</span><b>THE TOWER</b></div>
+<div class="photo p3" style="--img:url('assets/houses/house-03.jpeg')"><span>FRAME 03</span><b>THE MODEL</b></div>
+</div>
+</section>
+
+<section class="final section"><div class="final-ring"></div><span class="kicker reveal">THE SECRET IS ALREADY HERE</span><h2 class="reveal">FIND<br><em>THE DOT.</em></h2><p class="reveal">Некоторые вещи на сайте лучше не объяснять.</p></section>
+</main>
+
+<footer><div class="brand"><strong>HN</strong><span>HELLO NEIGHBOR <b>VERSE</b></span></div><span>FAN PROJECT / © <span id="year"></span></span><span>BUILD 05.0</span></footer>
+
+<div class="model-modal" id="modelModal"><div class="model-modal-box"><button class="close-model-modal">×</button><div class="model-modal-head"><span id="modalModelName">3D MODEL</span><b id="modalModelAuthor"></b></div><iframe id="modalModelFrame" allow="autoplay; fullscreen; xr-spatial-tracking" allowfullscreen></iframe><div class="model-modal-foot"><span>Orbit / Zoom / Pan</span><a id="modalSource" class="btn red" target="_blank" rel="noreferrer">SOURCE ↗</a></div></div></div>
+<div class="modal" id="archiveModal"><div class="modal-box"><button class="close">×</button><span>CLASSIFIED // FILE 000</span><h2>THE<br><em>BASEMENT</em></h2><p>Файл повреждён. Для восстановления нужны три фрагмента, спрятанные на странице.</p><div class="terminal">> SEARCHING...<br>> HOUSE SIGNATURE: FOUND<br>> SHADOW PATTERN: FOUND<br>> THIRD FRAGMENT: <b>LOCKED</b></div></div></div>
+
+<div class="game-modal" id="gameModal"><div class="game-shell"><button class="close-game">×</button><div class="game-top"><span>NIGHT SHIFT // MINI GAME</span><b>SCORE <i id="score">0000</i></b></div><canvas id="game" width="900" height="520"></canvas><div class="game-help">WASD / ARROWS — MOVE · COLLECT KEYS · AVOID THE NEIGHBOR · ESC — EXIT</div><div class="game-result" id="gameResult"></div></div></div>
+<script src="script.js"></script>
+</body>
+</html>
